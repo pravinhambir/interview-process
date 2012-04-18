@@ -177,6 +177,8 @@ public class Hello implements EntryPoint {
                             }
 
                             public void onSuccess(String result) {
+                            	numberOfCompletedCall = countCallService.countCall(numberOfCompletedCall); 
+                            	countCallLabel.setText(numberOfCompletedCall);
                                 dialogBox.setText("Remote Procedure Call");
                                 serverResponseLabel.removeStyleName("serverResponseLabelError");
                                 serverResponseLabel.setHTML(result);
