@@ -40,6 +40,7 @@ public class Hello implements EntryPoint {
 	 * UI WT 
 	 */
 	final Button sendButton = new Button("Send");
+	sendButton.setStyleName("red");
     final TextBox nameField = new TextBox();
     final Label errorLabel = new Label();
     final DialogBox dialogBox = new DialogBox();
@@ -120,7 +121,15 @@ public class Hello implements EntryPoint {
             }
         });
         
-
+        class MyHandlerClearText implements ClickHandler {
+            /**
+             * Fired when the user clicks on the sendButton.
+             */
+            public void onClick(ClickEvent event) {
+     personName.setText("");
+     personId.setText("");
+            }
+        }
         // Create a handler for the sendButton and nameField
         class MyHandler implements ClickHandler, KeyUpHandler {
             /**
@@ -147,7 +156,7 @@ public class Hello implements EntryPoint {
                 errorLabel.setText("");
                 String textToServer = nameField.getText();
                 if (!FieldVerifier.isValidName(textToServer)) {
-                    errorLabel.setText("Please enter more than 4 caracters");
+                    errorLabel.setText("Name must be at least 4 characters with the Send button");
                     return;
                 }
 
